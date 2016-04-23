@@ -62,13 +62,13 @@ function processAPIsJSON($apisjsonURL)
     $.each($apisJSON['apis'], function(apiKey, apiVal) {
 
       $apiLogo = apiVal['image'];
-      $html = '<tr><td colspan="2"><img src="' + $apiLogo + '" align="right" width="50" />';
+      $html = '<tr><td colspan="2"><img src="' + $apiLogo + '" align="left" width="50" />';
       $('#specViewer').append($html);
       $apiName = apiVal['name'];
-      $html = '<p><strong>' + $apiName + '</strong></p>';
+      $html = '<strong>' + $apiName + '</strong><br />';
       $('#specViewer').append($html);
       $apiDesc = apiVal['description'];
-      $html = '<p>' + $apiDesc + '</p></td></tr>';
+      $html = '' + $apiDesc + '</td></tr>';
       $('#specViewer').append($html);
 
       $apiHumanURL = apiVal['humanURL'];
