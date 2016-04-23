@@ -131,7 +131,7 @@ function addMessageField($message_path,$message_method)
             $html = $html + '<strong>' + $message_title + '(' + $message_method + ')</strong><br />' + $message_body + '';
             $html = $html + '</td></tr>';
             $('#messageListing').append($html);
-            console.log("number:" + $message_number);
+
             var options = {
               number: [
                 $message_number
@@ -141,7 +141,20 @@ function addMessageField($message_path,$message_method)
             var $allComments = $comments.list(options, function(err, $comments) {
 
               console.log($comments);
+              $.each($issues, function($commentKey, $commentValue) {
 
+                $comment_body = $commentValue['body'];
+                $comment_created_at = $commentValue['created_at'];
+
+                var date = new Date(comment_created_at);
+                console.log((date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear());
+
+                $html = '<tr><td colspan="3" class="messagedetails">';
+                $html = $html + '<i>(' + $comment_created_at + ')</i>' + $comment_body + '';
+                $html = $html + '</td></tr>';
+                $('#messageListing').append($html);
+
+                });
               });
 
             }
