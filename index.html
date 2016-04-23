@@ -61,7 +61,7 @@ function processAPIsJSON($apisjsonURL)
 
   $apiHumanURL = "";
 
-  $html = '<table width="100%" id="specListing" border="1" style="width: 100%;">';
+  $html = '<table width="100%" id="specListing" border="1" style="width: 100%; border: 1px solid #000;">';
   $('#specViewer').append($html);
 
   $FullCount = $FullCount + 1;
@@ -187,6 +187,9 @@ function processAPIsJSON($apisjsonURL)
 
                 // Do Something
 
+                $html = '</table>';
+                $('#specViewer').append($html);
+
               });
             }
           });
@@ -194,9 +197,6 @@ function processAPIsJSON($apisjsonURL)
       });
     });
   });
-
-  $html = '</table>';
-  $('#specViewer').append($html);
 
 }
 
