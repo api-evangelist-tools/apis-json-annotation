@@ -1,5 +1,5 @@
-title:        Minimum Viable API Operations Definition
-url:          http://create.your.first.apis.json.file.tools.apievangelist.com
+title:        APIs.json Annotation
+url:          http://apis.json.annotation.apievangelist.com/
 logo:         http://kinlane-productions.s3.amazonaws.com/api-evangelist/api-evangelist-logo-400.png
 logo_width:   80
 logo_bottom_padding: 10
@@ -23,9 +23,9 @@ org: api-evangelist-tools
 repo: apis-json-annotation
 
 # Masthead title
-masthead_link: http://create.your.first.apis.json.file.tools.apievangelist.com
+masthead_link: http://apis.json.annotation.apievangelist.com/
 masthead_font_size: 65
-masthead_title: '{"Minimum Viable API"}'
+masthead_title: '{"APIs.json Annotation"}'
 
 # Feature
 feature_title: API Guide
@@ -66,7 +66,7 @@ navigation:
     padding: 0
     decorate: 0
   - label1: Comment / Issues
-    link1: https://github.com/api-evangelist-tools/minimum-viable-api-operations-definition/issues
+    link1: https://github.com/api-evangelist-tools/apis-json-annotation/issues
     size1: 70
     extend: 0
     label2:
