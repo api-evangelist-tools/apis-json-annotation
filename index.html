@@ -27,9 +27,17 @@ title: APIs.json Annotation
     }
 </style>
 
-<h1>APIs.json Annotation - 4</h1>
+<h1>APIs.json Annotation - 5</h1>
 <p>This is an exmple of autocomplete done client side with <a href="/apis.json">this projects APIs.json</a>, providing access to the paths, verbs, and tags contained within an APIs.json collection.</p>
 <script type="text/jscript">
+
+if(getUrlVar('token'))
+  {
+    var $oAuth_Token = getUrlVar('token');
+  }
+
+var $org = 'api-evangelist-tools';
+var $repo = 'apis-json-subscribe';
 
 var $apiurl = "";
 var $Pallette = {};
@@ -38,17 +46,41 @@ var $pathArray = [];
 var $verbArray = [];
 var $tagArray = [];
 
+function sendIssue()
+  {
+    console.log($oAuth_Token);
+
+    $message_path = $("#message_path").val();
+    $message_method = $("#message_method").val();
+    $message_body = $("#message_body").val();
+
+    var github = new Github({token: $oAuth_Token,auth: "oauth"});
+    var issues = github.getIssues(username, reponame);
+    var options = {
+      title: "Found a bug",
+      body: $message_body,
+      assignee: "Kin Lane",
+      milestone: 1,
+      labels: [
+        $message_path,
+        $message_method
+      ]
+    };
+
+    issues.create(options, function(err, issue) {});
+  }
+
 function addMessageField($message_path,$message_method)
   {
 
   $html = '<form name="addMessageForm">';
   $html = $html + '<input type="text" name="message_path" id="message_method" value="' + $message_path + '" style="width: 100%;" />';
   $html = $html + '<input type="text" name="message_method" id="message_path" value="' + $message_method + '" style="width: 100%;" />';
-  $html = $html + '<table border="1" width="100%">';
+  $html = $html + '<table border="1" width="100%" style="width: 250px;">';
   $html = $html + '<tr>';
   $html = $html + '<td colspan="3">';
   $html = $html + '<input type="text" name="message_body" id="message_body" style="width: 100%;" />';
-  $html = $html + '<input type="button" name="addmessage" value="add" />';
+  $html = $html + '<input type="button" name="addmessage" value="add" onclick="sendIssue();" />';
   $html = $html + '</td>';
   $html = $html + '</tr>';
   $html = $html + '</table>';
