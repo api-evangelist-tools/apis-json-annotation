@@ -114,9 +114,9 @@ function processAPIsJSON($apisjsonURL)
                 $method = $method.toUpperCase();
 
                 $html = '<tr>';
-                $html .= '<td>' + $path_name + '</td>';
-                $html .= '<td width="35">(' + $method + ')</td>';
-                $html .= '</tr>';
+                $html = $html + '<td>' + $path_name + '</td>';
+                $html = $html + '<td width="35">(' + $method + ')</td>';
+                $html = $html + '</tr>';
                 $('#specViewer').append($html);
 
                 $methodexist = 0;
