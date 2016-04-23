@@ -133,12 +133,12 @@ function addMessageField($message_path,$message_method)
             $('#messageListing').append($html);
             console.log("number:" + $message_number);
             var options = {
-              number: [
+              issuenumber: [
                 $message_number
               ]
             };
             var $comments = $github.getComments($org,$repo);
-            var $allComments = $comments.list(options,$message_number, function(err, $comments) {
+            var $allComments = $comments.list(options, function(err, $comments) {
 
               console.log($comments);
 
