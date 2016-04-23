@@ -83,6 +83,8 @@ function addMessageField($message_path,$message_method)
     var $allIssues = $issues.list(options, function(err, $issues) {
       if($issues.length>0)
         {
+        $html = '<table width="100%" id="messageListing" border="1" style="width: 100%; border: 1px solid #000;"></table>';
+        $('#specViewer').append($html);
         $.each($issues, function($issueKey, $issueValue) {
             console.log($issueValue);
             $body = $issueValue['body'];
@@ -93,7 +95,7 @@ function addMessageField($message_path,$message_method)
             $html = '<tr><td colspan="3">';
             $html = $html + '<strong>' + $title + '</strong><br />' + $body + '';
             $html = $html + '</td></tr>';
-            $('#specMessenger').append($html);
+            $('#messageListing').append($html);
 
             });
         }
@@ -121,7 +123,7 @@ function processAPIsJSON($apisjsonURL)
 
   $apiHumanURL = "";
 
-  $html = '<table width="100%" id="specListing" border="1" style="width: 100%; border: 1px solid #000;">';
+  $html = '<table width="100%" id="specListing" border="1" style="width: 100%; border: 1px solid #000;"></table>';
   $('#specViewer').append($html);
 
   $FullCount = $FullCount + 1;
@@ -143,7 +145,7 @@ function processAPIsJSON($apisjsonURL)
       $html = '<tr><td colspan="3">';
       $html = $html + '<strong>' + $apiName + '</strong><br />';
       $html = $html + '</td></tr>';
-      $('#specViewer').append($html);
+      $('#specListing').append($html);
 
       $apiHumanURL = apiVal['humanURL'];
       $apiBaseURL = apiVal['baseURL'];
@@ -183,10 +185,10 @@ function processAPIsJSON($apisjsonURL)
             $basepath = $openapispec['basePath'];
 
             $html = '<tr><td colspan="3"><strong>Host:</strong> ' + $host + '</td></tr>';
-            $('#specViewer').append($html);
+            $('#specListing').append($html);
 
             $html = '<tr><td colspan="3"><strong>Base Path:</strong> ' + $basepath + '</td></tr>';
-            $('#specViewer').append($html);
+            $('#specListing').append($html);
 
             $.each($paths, function(pathKey, pathValue) {
 
@@ -209,7 +211,7 @@ function processAPIsJSON($apisjsonURL)
                 $html = $html + '<td width="50" onclick="addMessageField(' + $sQuote + $path_name + $sQuote + ',' + $sQuote + $method + $sQuote + '); return false;"><img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-messaging-system.png" width="25" /></td>';
                 $html = $html + '</tr>';
                 //console.log($html);
-                $('#specViewer').append($html);
+                $('#specListing').append($html);
 
                 $methodexist = 0;
                 $.each($verbArray, function(key, value) { if(value == $method){ $methodexist = 1; }});
@@ -247,9 +249,6 @@ function processAPIsJSON($apisjsonURL)
 
                 // Do Something
 
-                $html = '</table>';
-                $('#specViewer').append($html);
-
               });
             }
           });
@@ -267,8 +266,8 @@ processAPIsJSON($apisjsonURL);
 
 <table width="100%" cellpadding="2" cellspacing="2" border"1">
   <tr>
-    <td width="82%" valign="top" id="specViewer"></td>
-    <td width="18%" valign="top" id="specMessenger"></td>
+    <td width="65%" valign="top" id="specViewer"></td>
+    <td width="35%" valign="top" id="specMessenger"></td>
   </tr>
 </table>
 
