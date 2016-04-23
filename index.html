@@ -259,7 +259,7 @@ function processAPIsJSON($apisjsonURL)
   var loadIt = $.getJSON($apisjsonURL, function($apisJSON) {
 
     // Publish to Viewer
-    $viewer = JSON.stringify($MasterAPISJSON, null, 4);
+    $viewer = JSON.stringify($apisJSON, null, 4);
     document.getElementById("jsonViewerDetails").value = $viewer;
 
     $masterName = $apisJSON['name'];
