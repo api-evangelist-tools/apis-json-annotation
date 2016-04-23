@@ -60,6 +60,24 @@ var $pathArray = [];
 var $verbArray = [];
 var $tagArray = [];
 
+
+function addMessageForm(message_path,$message_method)
+  {
+  $html = '<form name="addMessageForm">';
+  $html = $html + '<input type="text" name="message_method" id="message_method" value="' + $message_method + '" style="width: 100%;" />';
+  $html = $html + '<input type="text" name="message_path" id="message_path" value="' + $message_path + '" style="width: 100%;" />';
+  $html = $html + '<table border="0" width="100%" style="width: 100%;">';
+  $html = $html + '<tr>';
+  $html = $html + '<td colspan="3">';
+  $html = $html + '<textarea name="message_body" id="message_body" style="width: 100%; height: 200px;"></textarea>';
+  $html = $html + '<center><input type="button" name="addmessage" value="Start Thread On This Endpoint" onclick="sendIssue();" /></center>';
+  $html = $html + '</td>';
+  $html = $html + '</tr>';
+  $html = $html + '</table>';
+  $html = $html + '</form>';
+  $('#specMessenger').append($html);
+  }
+
 function sendIssue()
   {
     $message_path = $("#message_path").val();
@@ -132,7 +150,8 @@ function addMessageField($message_path,$message_method)
         $issue_count = 1;
         $html = '<table width="100%" id="messageListing" border="0" style="width: 100%; border: 0px solid #000;"></table>';
         $('#specMessenger').append($html);
-        console.log("COUNT: " + $issues.length);
+
+        $findanyissues = 0;
         $.each($issues, function($issueKey, $issueValue) {
 
           $message_id = $issueValue['id'];
@@ -146,7 +165,7 @@ function addMessageField($message_path,$message_method)
 
           if($message_path == $message_title)
             {
-
+            $findanyissues = 1;
             $html = '<tr><td colspan="3" class="messagedetails">';
             $html = $html + '<a href="' + $message_html_url + '" target="_blank" title="Visit Issue Thread On Github"><img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-arrow-right.png" align="right" width="25" /></a>';
             $html = $html + '<span style="font-size: 16px;"><strong>' + $message_title + '(' + $message_method + ')</strong></span><br />';
@@ -181,43 +200,38 @@ function addMessageField($message_path,$message_method)
 
             }
 
-          if($issue_count==$issues.length && $issues.length > 1)
+          if($issue_count==$issues.length)
             {
-            $html = '<form name="addContentForm">';
-            $html = $html + '<input type="text" name="message_method" id="message_method" value="' + $message_method + '" style="width: 100%;" />';
-            $html = $html + '<input type="text" name="message_path" id="message_path" value="' + $message_path + '" style="width: 100%;" />';
-            $html = $html + '<input type="text" name="message_number" id="message_number" value="' + $message_number + '" style="width: 100%;" />';
-            $html = $html + '<table border="0" width="100%" style="width: 100%; border-top: 1px solid #000; margin-top: 5px;">';
-            $html = $html + '<tr>';
-            $html = $html + '<td colspan="3">';
-            $html = $html + '<textarea name="comment_body" id="comment_body" style="width: 100%; height: 100px;"></textarea>';
-            $html = $html + '<center><input type="button" name="addcomment" value="Add Comment" onclick="sendComment();" /></center>';
-            $html = $html + '</td>';
-            $html = $html + '</tr>';
-            $html = $html + '</table>';
-            $html = $html + '</form>';
-            $('#specMessenger').append($html);
+            if($findanyissues==0)
+              {
+              addMessageForm($message_path,$message_method)
+              }
+            else
+              {
+              $html = '<form name="addContentForm">';
+              $html = $html + '<input type="text" name="message_method" id="message_method" value="' + $message_method + '" style="width: 100%;" />';
+              $html = $html + '<input type="text" name="message_path" id="message_path" value="' + $message_path + '" style="width: 100%;" />';
+              $html = $html + '<input type="text" name="message_number" id="message_number" value="' + $message_number + '" style="width: 100%;" />';
+              $html = $html + '<table border="0" width="100%" style="width: 100%; border-top: 1px solid #000; margin-top: 5px;">';
+              $html = $html + '<tr>';
+              $html = $html + '<td colspan="3">';
+              $html = $html + '<textarea name="comment_body" id="comment_body" style="width: 100%; height: 100px;"></textarea>';
+              $html = $html + '<center><input type="button" name="addcomment" value="Add Comment" onclick="sendComment();" /></center>';
+              $html = $html + '</td>';
+              $html = $html + '</tr>';
+              $html = $html + '</table>';
+              $html = $html + '</form>';
+              $('#specMessenger').append($html);
+              }
             }
           $issue_count++;
-
           });
-
         }
       else
         {
-        $html = '<form name="addMessageForm">';
-        $html = $html + '<input type="text" name="message_method" id="message_method" value="' + $message_method + '" style="width: 100%;" />';
-        $html = $html + '<input type="text" name="message_path" id="message_path" value="' + $message_path + '" style="width: 100%;" />';
-        $html = $html + '<table border="0" width="100%" style="width: 100%;">';
-        $html = $html + '<tr>';
-        $html = $html + '<td colspan="3">';
-        $html = $html + '<textarea name="message_body" id="message_body" style="width: 100%; height: 200px;"></textarea>';
-        $html = $html + '<center><input type="button" name="addmessage" value="Start Thread On This Endpoint" onclick="sendIssue();" /></center>';
-        $html = $html + '</td>';
-        $html = $html + '</tr>';
-        $html = $html + '</table>';
-        $html = $html + '</form>';
-        $('#specMessenger').append($html);
+
+        addMessageForm($message_path,$message_method);
+
         }
      });
   }
