@@ -354,7 +354,7 @@ function processAPIsJSON($apisjsonURL)
                   $('#specListing').append($html);
                   }
 
-                $.each($parameters, function($parameterKey, $parameterValue)
+                $.each($parameters, function($parameterKey, $parameterValue){
                   $parameter_in = $parameterValue['in'];
                   $parameter_iname = $parameterValue['name'];
                   $parameter_description = $parameterValue['description'];
