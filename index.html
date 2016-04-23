@@ -56,13 +56,14 @@ function sendIssue()
     $message_body = $("#message_body").val();
 
     var github = new Github({token: $oAuth_Token,auth: "oauth"});
+    var user = github.getUser();
+    console.log(user);
     var issues = github.getIssues($org, $repo);
     var options = {
-      title: "Found a bug",
+      title: $message_path,
       body: $message_body,
       assignee: "kinlane",
       labels: [
-        $message_path,
         $message_method
       ]
     };
