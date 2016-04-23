@@ -76,12 +76,12 @@ function sendIssue()
 
   function sendComment()
     {
-      $issue_id = $("#issue_id").val();
+      $comments_url = $("#comments_url").val();
       $comment_body = $("#comment_body").val();
-
+      console.log($comments_url);
       var $issue = {
         comments_url: [
-          $issue_id
+          $comments_url
         ]
       };
 
@@ -136,7 +136,7 @@ function addMessageField($message_path,$message_method)
           if($issue_count==$issues.length)
             {
             $html = '<form name="addContentForm">';
-            $html = $html + '<input type="text" name="message_id" id="message_id" value="' + $comments_url + '" style="width: 100%;" />';
+            $html = $html + '<input type="text" name="comments_url" id="comments_url" value="' + $comments_url + '" style="width: 100%;" />';
             //$html = $html + '<input type="text" name="message_method" id="message_path" value="' + $message_path + '" style="width: 100%;" />';
             $html = $html + '<table border="1" width="100%" style="width: 250px;">';
             $html = $html + '<tr>';
