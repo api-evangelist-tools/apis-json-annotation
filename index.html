@@ -350,7 +350,7 @@ function processAPIsJSON($apisjsonURL)
 
                 if($parameters > 0)
                   {
-                  $hmtl = '<ul id="' + $apislug + '"></ul>';
+                  $html = '<tr><td colspan="3"><ul id="' + $apislug + '"></ul></td></tr>';
                   $('#specListing').append($html);
                   }
 
@@ -360,7 +360,7 @@ function processAPIsJSON($apisjsonURL)
                   $parameter_description = $parameterValue['description'];
                   $parameter_type = $parameterValue['type'];
 
-                  $hmtl = '<li>(<i>' + $parameter_in + '</i>) <strong>' + $parameter_iname + '</strong> - ' + $parameter_type + ' - ' + $parameter_description + '></l>';
+                  $html = '<li>(<i>' + $parameter_in + '</i>) <strong>' + $parameter_iname + '</strong> - ' + $parameter_type + ' - ' + $parameter_description + '></l>';
                   $('#specListing').append($html);
 
                   });
