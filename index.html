@@ -343,9 +343,9 @@ function processAPIsJSON($apisjsonURL)
                 $('#specListing').append($html);
 
                 $method_summary = methodValue['summary'];
-                $apislug = $method_summary.replace(/ /g,"-");
+                $apislug = $method_summary.replace(/ /g,"-") + '-' + $method.replace(/ /g,"-");
                 $apislug = $apislug.toLowerCase();
-
+                console.log($apislug);
                 $parameters = methodValue['parameters'];
 
                 if($parameters > 0)
