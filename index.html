@@ -99,7 +99,7 @@ function addMessageField($message_path,$message_method)
           if($message_path == $message_title)
             {
             $html = '<tr><td colspan="3" class="messagedetails">';
-            $html = $html + '<strong>' + $title + '(' + $message_method + ')</strong><br />' + $body + '';
+            $html = $html + '<strong>' + $message_title + '(' + $message_method + ')</strong><br />' + $message_body + '';
             $html = $html + '</td></tr>';
             $('#messageListing').append($html);
             }
