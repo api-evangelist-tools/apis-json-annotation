@@ -33,6 +33,9 @@ function processAPIsJSON($apisjsonURL)
 
   $apiHumanURL = "";
 
+  $html = '<table width="100%">';
+  $('#specViewer').append($html);
+
   $FullCount = $FullCount + 1;
 
   var loadIt = $.getJSON($apisjsonURL, function($apisJSON) {
@@ -49,19 +52,19 @@ function processAPIsJSON($apisjsonURL)
     $.each($apisJSON['apis'], function(apiKey, apiVal) {
 
       $apiLogo = apiVal['image'];
-      $html = '<p><img src="' + $apiLogo + '" align="right" width="150" /></p>';
+      $html = '<tr><td colspan="2"><img src="' + $apiLogo + '" align="right" width="150" /></p>';
       $('#specViewer').append($html);
       $apiName = apiVal['name'];
       $html = '<p><strong>' + $apiName + '</strong></p>';
       $('#specViewer').append($html);
       $apiDesc = apiVal['description'];
-      $html = '<p><strong>' + $apiDesc + '</strong></p>';
+      $html = '<p>' + $apiDesc + '</p></td></tr>';
       $('#specViewer').append($html);
 
       $apiHumanURL = apiVal['humanURL'];
       $apiBaseURL = apiVal['baseURL'];
 
-      $html = '<br /><p><strong>Base URL:</strong> ' + $apiBaseURL + '</p><br />';
+      $html = '<tr><td colspan="2"><strong>Base URL:</strong> ' + $apiBaseURL + '</td></tr>';
       $('#specViewer').append($html);
 
       $apiProperties = apiVal['properties'];
@@ -97,9 +100,6 @@ function processAPIsJSON($apisjsonURL)
             // show the unique host
             $host = $openapispec['host'];
 
-            $html = '<ul>';
-            $('#specViewer').append($html);
-
             $.each($paths, function(pathKey, pathValue) {
 
               $path_name = pathKey;
@@ -113,7 +113,10 @@ function processAPIsJSON($apisjsonURL)
                 $method = methodKey;
                 $method = $method.toUpperCase();
 
-                $html = '<li>' + $path_name + '(' + $method + ')</li>';
+                $html = '<tr>';
+                $html .= '<td>' + $path_name + '</td>';
+                $html .= '<td width="35">(' + $method + ')</td>';
+                $html .= '</tr>';
                 $('#specViewer').append($html);
 
                 $methodexist = 0;
@@ -149,15 +152,11 @@ function processAPIsJSON($apisjsonURL)
             $FullCount = $FullCount - 1;
             if($FullCount==0){
 
-              $pathArray.sort();
-              $verbArray.sort();
-              $tagArray.sort();
-
-              // Load AutoComplete
+              // Load What We Want
               $(function() {
-                $( "#paths" ).autocomplete({ source: $pathArray });
-                $( "#verbs" ).autocomplete({ source: $verbArray });
-                $( "#tags" ).autocomplete({ source: $tagArray });
+
+                // Do Something
+
               });
             }
           });
@@ -165,6 +164,10 @@ function processAPIsJSON($apisjsonURL)
       });
     });
   });
+
+  $html = '</table>';
+  $('#specViewer').append($html);
+
 }
 
 $apisjsonURL = "/apis.json";
@@ -172,6 +175,11 @@ processAPIsJSON($apisjsonURL);
 
 </script>
 
-<div id="specViewer"></div>
+<table width="100%">
+  <tr>
+    <td width="50%" valign="top" id="specViewer"></td>
+    <td width="50%" valign="top">[put chat here]</td>
+  </tr>
+</table>
 
 <p>I am just exploring different ways of working with the surface area of an API, using machine readable API definitions like APIs.json and OpenAPI Spec.</p>
