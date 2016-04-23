@@ -49,27 +49,33 @@ var $tagArray = [];
 
 function sendIssue()
   {
+
+    var $github = new Github({token: $oAuth_Token,auth: "oauth"});
+
     $message_path = $("#message_path").val();
     $message_method = $("#message_method").val();
     $message_body = $("#message_body").val();
 
-    var github = new Github({token: $oAuth_Token,auth: "oauth"});
-    var $authuser = github.getUser();
+    var $issues = $github.getIssues(username, reponame);
+    var $allIssues = $issues.list(null, function(err, $issues) {
+
+      var_dump($issues);
+
+    var $authuser = $github.getUser();
+
     var $userdetails = $authuser.show(null, function(err, user) {
-      var issues = github.getIssues($org, $repo);
-      var options = {
-        title: $message_path,
-        body: $message_body,
-        assignee: user['login'],
-        labels: [
-          $message_method
-        ]
-      };
 
-      issues.create(options, function(err, issue) {
+        var issues = $github.getIssues($org, $repo);
+        var options = {
+          title: $message_path,
+          body: $message_body,
+          assignee: user['login'],
+          labels: [
+            $message_method
+          ]
+        };
 
-        console.log(err);
-        console.log(issue);
+        //issues.create(options, function(err, issue) {  });
 
       });
 
