@@ -86,8 +86,6 @@ function processAPIsJSON($apisjsonURL)
             $pull_url = $url;
             }
 
-          console.log($pull_url);
-
           var loadIt3 = $.getJSON($pull_url, function($openapispec) {
 
             $paths = $openapispec['paths'];
@@ -98,6 +96,9 @@ function processAPIsJSON($apisjsonURL)
 
             // show the unique host
             $host = $openapispec['host'];
+
+            $html = '<ul>';
+            $('#specViewer').append($html);
 
             $.each($paths, function(pathKey, pathValue) {
 
@@ -111,6 +112,9 @@ function processAPIsJSON($apisjsonURL)
 
                 $method = methodKey;
                 $method = $method.toUpperCase();
+
+                $html = '<li>' + $path_name + '(' + $method + ')</li>';
+                $('#specViewer').append($html);
 
                 $methodexist = 0;
                 $.each($verbArray, function(key, value) { if(value == $method){ $methodexist = 1; }});
@@ -134,6 +138,10 @@ function processAPIsJSON($apisjsonURL)
                 });
               });
             });
+
+            $html = '</ul>';
+            $('#specViewer').append($html);
+
           });
 
           loadIt3.complete(function() {
