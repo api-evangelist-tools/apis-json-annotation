@@ -146,7 +146,7 @@ function addMessageField($message_path,$message_method)
                 $comment_body = $commentValue['body'];
                 $comment_created_at = $commentValue['created_at'];
 
-                var date = new Date(comment_created_at);
+                var date = new Date($comment_created_at);
                 console.log((date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear());
 
                 $html = '<tr><td colspan="3" class="messagedetails">';
