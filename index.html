@@ -132,7 +132,7 @@ function addMessageField($message_path,$message_method)
         $issue_count = 1;
         $html = '<table width="100%" id="messageListing" border="0" style="width: 100%; border: 0px solid #000;"></table>';
         $('#specMessenger').append($html);
-
+        console.log("COUNT: " + $issues);
         $.each($issues, function($issueKey, $issueValue) {
 
           $message_id = $issueValue['id'];
@@ -201,6 +201,7 @@ function addMessageField($message_path,$message_method)
           $issue_count++;
 
           });
+
         }
       else
         {
