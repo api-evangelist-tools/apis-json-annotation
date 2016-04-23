@@ -27,15 +27,15 @@ title: APIs.json Annotation
     }
     .messagedetails{
       font-size: 11px;
-      padding: 5px;
+      padding: 8px;
     }
     .commentdetails{
       font-size: 11px;
-      padding: 5px;
+      padding: 8px;
     }
 </style>
 
-<h1>APIs.json Annotation - 5</h1>
+<h1>APIs.json Annotation</h1>
 <p>This is an exmple of autocomplete done client side with <a href="/apis.json">this projects APIs.json</a>, providing access to the paths, verbs, and tags contained within an APIs.json collection.</p>
 <script type="text/jscript">
 
@@ -175,7 +175,7 @@ function addMessageField($message_path,$message_method)
             $html = '<form name="addContentForm">';
             $html = $html + '<input type="hidden" name="message_number" id="message_number" value="' + $message_number + '" style="width: 100%;" />';
             //$html = $html + '<input type="text" name="message_method" id="message_path" value="' + $message_path + '" style="width: 100%;" />';
-            $html = $html + '<table border="0" width="100%" style="width: 100%;">';
+            $html = $html + '<table border="0" width="100%" style="width: 100%; border-top: 1px solid #000; margin-top: 5px;">';
             $html = $html + '<tr>';
             $html = $html + '<td colspan="3">';
             $html = $html + '<input type="text" name="comment_body" id="comment_body" style="width: 100%;" />';
