@@ -68,7 +68,12 @@ function sendIssue()
       ]
     };
 
-    issues.create(options, function(err, issue) {});
+    issues.create(options, function(err, issue) {
+
+      console.log(err);
+      console.log(issue);
+
+    });
   }
 
 function addMessageField($message_path,$message_method)
