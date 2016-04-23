@@ -351,13 +351,13 @@ function processAPIsJSON($apisjsonURL)
                 $method_summary = methodValue['summary'];
                 $apislug = $method_summary.replace(/ /g,"-") + '-' + $method.replace(/ /g,"-");
                 $apislug = $apislug.toLowerCase();
-                console.log($apislug);
                 $parameters = methodValue['parameters'];
 
                 if($parameters > 0)
                   {
                   $html = '<tr><td colspan="3"><ul id="' + $apislug + '" class="paramlist"></ul></td></tr>';
                   $('#specListing').append($html);
+                  console.log($apislug);
                   }
 
                 $.each($parameters, function($parameterKey, $parameterValue){
