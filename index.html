@@ -76,9 +76,9 @@ function sendIssue()
 
   function sendComment()
     {
-      $message_id = $("#message_id").val();
+      $message_number = $("#message_number").val();
       $comment_body = $("#comment_body").val();
-      $comments_url = '/repos/' + $org + '/' + $repo + '/issues/' + $message_id + '/comments';
+      $comments_url = '/repos/' + $org + '/' + $repo + '/issues/' + $message_number + '/comments';
       console.log($comments_url);
       var $issue = {
         comments_url: [
@@ -120,6 +120,7 @@ function addMessageField($message_path,$message_method)
           console.log($message_path + '==' + $title);
 
           $message_id = $issueValue['id'];
+          $message_number = $issueValue['number'];
           $message_body = $issueValue['body'];
           $message_html_url = $issueValue['html_url'];
           $message_created_at = $issueValue['created_at'];
@@ -137,7 +138,7 @@ function addMessageField($message_path,$message_method)
           if($issue_count==$issues.length)
             {
             $html = '<form name="addContentForm">';
-            $html = $html + '<input type="text" name="message_id" id="message_id" value="' + $message_id + '" style="width: 100%;" />';
+            $html = $html + '<input type="text" name="message_number" id="message_number" value="' + $message_number + '" style="width: 100%;" />';
             //$html = $html + '<input type="text" name="message_method" id="message_path" value="' + $message_path + '" style="width: 100%;" />';
             $html = $html + '<table border="1" width="100%" style="width: 250px;">';
             $html = $html + '<tr>';
