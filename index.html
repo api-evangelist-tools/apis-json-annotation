@@ -35,14 +35,14 @@ function processAPIsJSON($apisjsonURL)
 
   $FullCount = $FullCount + 1;
 
-  var loadIt = $.getJSON($apisjsonURL, function(apisJSON) {
+  var loadIt = $.getJSON($apisjsonURL, function($apisJSON) {
 
-    $masterName = apisJSON['name'];
+    $masterName = $apisJSON['name'];
 
-    $masterDesc = apisJSON['description'];
-    $masterLogo = apisJSON['image'];
-    $masterURL = apisJSON['url'];
-    $masterTags = apisJSON['tags'];
+    $masterDesc = $apisJSON['description'];
+    $masterLogo = $apisJSON['image'];
+    $masterURL = $apisJSON['url'];
+    $masterTags = $apisJSON['tags'];
 
     $.each($apisJSON['apis'], function(apiKey, apiVal) {
 
