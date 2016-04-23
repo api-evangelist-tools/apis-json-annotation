@@ -36,7 +36,7 @@ title: APIs.json Annotation
 </style>
 
 <h1>APIs.json Annotation</h1>
-<p>This is an exmple of autocomplete done client side with <a href="/apis.json">this projects APIs.json</a>, providing access to the paths, verbs, and tags contained within an APIs.json collection.</p>
+<p>This is my API annotation micro tool, done using the <a href="/apis.json">APIs.json file</a> for this repository, or one passed in using the "url" query string variable. This tool runs 100% on Github pages, leverage JavaScript and the Github API to do what it does. Users who have been added to the repo, can pass in a personal token using the "token" query string variable, and will then be able to annotate and comment.</p>
 <script type="text/jscript">
 
 if(getUrlVar('token'))
@@ -44,16 +44,15 @@ if(getUrlVar('token'))
     var $oAuth_Token = getUrlVar('token');
   }
 
+$urlOverride = '';
+if(getUrlVar('url'))
+  {
+    var $urlOverride = getUrlVar('url');
+  }
+
 var $org = 'api-evangelist-tools';
 var $repo = 'apis-json-annotation';
 var $user = 'kinlane';
-
-var $apiurl = "";
-var $Pallette = {};
-var $FullCount = 0;
-var $pathArray = [];
-var $verbArray = [];
-var $tagArray = [];
 
 function sendIssue()
   {
@@ -353,7 +352,16 @@ function processAPIsJSON($apisjsonURL)
 
 }
 
-$apisjsonURL = "/apis.json";
+if($urlOverride!='')
+  {
+  $apisjsonURL = $urlOverride;
+  }
+else
+  {
+  $apisjsonURL = "/apis.json";
+  }
+
+// Process It!!
 processAPIsJSON($apisjsonURL);
 
 </script>
@@ -369,5 +377,4 @@ processAPIsJSON($apisjsonURL);
     </td>
   </tr>
 </table>
-
-<p>I am just exploring different ways of working with the surface area of an API, using machine readable API definitions like APIs.json and OpenAPI Spec.</p>
+<p>You can fork this project, and run under your own account, on your own APIs.json index. I am just exploring different ways of working with the surface area of an API, using machine readable API definitions like APIs.json and OpenAPI Spec.</p>
