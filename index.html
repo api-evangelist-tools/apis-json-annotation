@@ -83,6 +83,9 @@ function sendIssue()
 
   function sendComment()
     {
+      $message_path = $("#message_path").val();
+      $message_method = $("#message_method").val();
+
       $message_number = $("#message_number").val();
       $comment_body = $("#comment_body").val();
       $comments_url = '/repos/' + $org + '/' + $repo + '/issues/' + $message_number + '/comments';
@@ -97,10 +100,7 @@ function sendIssue()
 
         var $issues = github.getIssues($org, $repo);
         $issues.comment($issue, $comment_body, function(err, comment) {
-
-        console.log(err);
-        console.log(comment);
-
+        addMessageField($message_path,$message_method);
         });
 
       });
