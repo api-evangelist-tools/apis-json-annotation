@@ -154,7 +154,7 @@ function addMessageField($message_path,$message_method)
             var $comments = $github.getComments($org,$repo);
             var $allComments = $comments.list(options, function(err, $comments) {
 
-              $.each($issues, function($commentKey, $commentValue) {
+              $.each($comments, function($commentKey, $commentValue) {
 
                 $comment_body = $commentValue['body'];
                 $comment_created_at = $commentValue['created_at'];
