@@ -114,6 +114,8 @@ function addMessageField($message_path,$message_method)
       ]
     };
 
+    document.getElementById("specMessenger").innerHTML = '';
+
     var $github = new Github({token: $oAuth_Token,auth: "oauth"});
     var $issues = $github.getIssues($org,$repo);
     var $allIssues = $issues.list(options, function(err, $issues) {
@@ -194,7 +196,6 @@ function addMessageField($message_path,$message_method)
         }
       else
         {
-        document.getElementById("specMessenger").innerHTML = '';
         $html = '<form name="addMessageForm">';
         $html = $html + '<input type="text" name="message_path" id="message_method" value="' + $message_method + '" style="width: 100%;" />';
         $html = $html + '<input type="text" name="message_method" id="message_path" value="' + $message_path + '" style="width: 100%;" />';
