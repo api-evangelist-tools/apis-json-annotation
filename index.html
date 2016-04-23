@@ -89,17 +89,18 @@ function addMessageField($message_path,$message_method)
         $html = '<table width="100%" id="messageListing" border="1" style="width: 100%; border: 1px solid #000;"></table>';
         $('#specMessenger').append($html);
         $.each($issues, function($issueKey, $issueValue) {
-            console.log($issueValue);
-            $body = $issueValue['body'];
-            $html_url = $issueValue['html_url'];
-            $created_at = $issueValue['created_at'];
-            $title = $issueValue['title'];
+            if($message_path == $title)
+              {
+              $body = $issueValue['body'];
+              $html_url = $issueValue['html_url'];
+              $created_at = $issueValue['created_at'];
+              $title = $issueValue['title'];
 
-            $html = '<tr><td colspan="3" class="messagedetails">';
-            $html = $html + '<strong>' + $title + '</strong><br />' + $body + '';
-            $html = $html + '</td></tr>';
-            $('#messageListing').append($html);
-
+              $html = '<tr><td colspan="3" class="messagedetails">';
+              $html = $html + '<strong>' + $title + '(' + $message_method + ')</strong><br />' + $body + '';
+              $html = $html + '</td></tr>';
+              $('#messageListing').append($html);
+              }
             });
         }
       else
@@ -267,10 +268,10 @@ processAPIsJSON($apisjsonURL);
 
 <table width="100%" cellpadding="2" cellspacing="2" border"1">
   <tr>
-    <td width="65%" valign="top" id="specViewer">
+    <td width="60%" valign="top" id="specViewer">
       <table width="100%" id="specListing" border="1" style="width: 100%; border: 1px solid #000;"></table>'
     </td>
-    <td width="35%" valign="top" id="specMessenger"></td>
+    <td width="40%" valign="top" id="specMessenger"></td>
   </tr>
 </table>
 
