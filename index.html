@@ -178,8 +178,9 @@ function addMessageField($message_path,$message_method)
           if($issue_count==$issues.length)
             {
             $html = '<form name="addContentForm">';
+            $html = $html + '<input type="text" name="message_method" id="message_method" value="' + $message_method + '" style="width: 100%;" />';
+            $html = $html + '<input type="text" name="message_path" id="message_path" value="' + $message_path + '" style="width: 100%;" />';
             $html = $html + '<input type="hidden" name="message_number" id="message_number" value="' + $message_number + '" style="width: 100%;" />';
-            //$html = $html + '<input type="text" name="message_method" id="message_path" value="' + $message_path + '" style="width: 100%;" />';
             $html = $html + '<table border="0" width="100%" style="width: 100%; border-top: 1px solid #000; margin-top: 5px;">';
             $html = $html + '<tr>';
             $html = $html + '<td colspan="3">';
