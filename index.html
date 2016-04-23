@@ -37,7 +37,8 @@ if(getUrlVar('token'))
   }
 
 var $org = 'api-evangelist-tools';
-var $repo = 'apis-json-subscribe';
+var $repo = 'apis-json-annotation';
+var $user = 'kinlane';
 
 var $apiurl = "";
 var $Pallette = {};
@@ -55,7 +56,7 @@ function sendIssue()
     $message_body = $("#message_body").val();
 
     var github = new Github({token: $oAuth_Token,auth: "oauth"});
-    var issues = github.getIssues(username, reponame);
+    var issues = github.getIssues($user, $repo);
     var options = {
       title: "Found a bug",
       body: $message_body,
