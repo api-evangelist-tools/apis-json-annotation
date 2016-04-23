@@ -106,16 +106,18 @@ function addMessageField($message_path,$message_method)
         $message_method
       ]
     };
+    
     var $github = new Github({token: $oAuth_Token,auth: "oauth"});
     var $issues = $github.getIssues($org,$repo);
     var $allIssues = $issues.list(options, function(err, $issues) {
       if($issues.length>0)
         {
+
         $issue_count = 1;
         $html = '<table width="100%" id="messageListing" border="1" style="width: 100%; border: 1px solid #000;"></table>';
         $('#specMessenger').append($html);
+
         $.each($issues, function($issueKey, $issueValue) {
-          console.log($message_path + '==' + $title);
 
           $message_id = $issueValue['id'];
           $message_number = $issueValue['number'];
@@ -127,6 +129,7 @@ function addMessageField($message_path,$message_method)
 
           if($message_path == $message_title)
             {
+
             $html = '<tr><td colspan="3" class="messagedetails">';
             $html = $html + '<strong>' + $message_title + '(' + $message_method + ')</strong><br />' + $message_body + '';
             $html = $html + '</td></tr>';
@@ -137,18 +140,17 @@ function addMessageField($message_path,$message_method)
                 $message_number
               ]
             };
+
             var $comments = $github.getComments($org,$repo);
             var $allComments = $comments.list(options, function(err, $comments) {
 
-              console.log($comments);
               $.each($issues, function($commentKey, $commentValue) {
 
                 $comment_body = $commentValue['body'];
                 $comment_created_at = $commentValue['created_at'];
 
                 var date = new Date($comment_created_at);
-                console.log((date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear());
-
+                $comment_created_at = (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
                 $html = '<tr><td colspan="3" class="messagedetails">';
                 $html = $html + '<i>(' + $comment_created_at + ')</i>' + $comment_body + '';
                 $html = $html + '</td></tr>';
