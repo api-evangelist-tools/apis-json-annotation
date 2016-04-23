@@ -61,15 +61,15 @@ function processAPIsJSON($apisjsonURL)
 
     $.each($apisJSON['apis'], function(apiKey, apiVal) {
 
-      $apiLogo = apiVal['image'];
-      $html = '<tr><td colspan="2"><img src="' + $apiLogo + '" align="left" width="50" />';
-      $('#specViewer').append($html);
+      //$apiLogo = apiVal['image'];
+      //$html = '<tr><td colspan="2"><img src="' + $apiLogo + '" align="left" width="50" />';
+      //$('#specViewer').append($html);
       $apiName = apiVal['name'];
       $html = '<strong>' + $apiName + '</strong><br />';
       $('#specViewer').append($html);
       $apiDesc = apiVal['description'];
-      $html = '' + $apiDesc + '</td></tr>';
-      $('#specViewer').append($html);
+      //$html = '' + $apiDesc + '</td></tr>';
+      //$('#specViewer').append($html);
 
       $apiHumanURL = apiVal['humanURL'];
       $apiBaseURL = apiVal['baseURL'];
@@ -189,7 +189,7 @@ processAPIsJSON($apisjsonURL);
 
 </script>
 
-<table width="100%">
+<table width="100%" cellpadding="5" cellspacing="5">
   <tr>
     <td width="50%" valign="top" id="specViewer"></td>
     <td width="50%" valign="top">[put chat here]</td>
