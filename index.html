@@ -19,10 +19,10 @@ title: APIs.json Annotation
     .specListing{
 
     }
-    .specListing tr{
-
+    .pathname{
+      font-size: 11px;
     }
-    .specListing td{
+    .method{
       font-size: 11px;
     }
 </style>
@@ -128,8 +128,8 @@ function processAPIsJSON($apisjsonURL)
                 $method = $method.toUpperCase();
 
                 $html = '<tr>';
-                $html = $html + '<td>' + $path_name + '</td>';
-                $html = $html + '<td width="35">(' + $method + ')</td>';
+                $html = $html + '<td class="pathname">' + $path_name + '</td>';
+                $html = $html + '<td class="method" width="35">(' + $method + ')</td>';
                 $html = $html + '</tr>';
                 $('#specViewer').append($html);
 
