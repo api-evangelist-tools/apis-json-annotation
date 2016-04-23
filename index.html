@@ -38,6 +38,8 @@ function processAPIsJSON($apisjsonURL)
   var loadIt = $.getJSON($apisjsonURL, function($apisJSON) {
 
     $masterName = $apisJSON['name'];
+    $html = '<p><strong>' + $masterName + '</strong></p>';
+    $('#specViewer').append($html);
 
     $masterDesc = $apisJSON['description'];
     $masterLogo = $apisJSON['image'];
@@ -47,6 +49,8 @@ function processAPIsJSON($apisjsonURL)
     $.each($apisJSON['apis'], function(apiKey, apiVal) {
 
       $apiName = apiVal['name'];
+      $html = '<p><strong>' + $apiName + '</strong></p>';
+      $('#specViewer').append($html);
       $apiDesc = apiVal['description'];
       $apiLogo = apiVal['image'];
       $apiHumanURL = apiVal['humanURL'];
