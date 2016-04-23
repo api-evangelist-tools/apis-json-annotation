@@ -28,6 +28,10 @@ title: APIs.json Annotation
     .messagedetails{
       font-size: 11px;
     }
+    .commentdetails{
+      font-size: 11px;
+      padding: 3px;
+    }
 </style>
 
 <h1>APIs.json Annotation - 5</h1>
@@ -155,7 +159,7 @@ function addMessageField($message_path,$message_method)
 
                 var date = new Date($comment_created_at);
                 $comment_created_at = (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
-                $html = '<tr style="border-top: 1px solid #000;"><td colspan="3" class="messagedetails">';
+                $html = '<tr style="border-top: 1px solid #000;"><td colspan="3" class="commentdetails">';
                 $html = $html + '<strong>(' + $comment_user + ')</strong><i>(' + $comment_created_at + ')</i>' + $comment_body + '';
                 $html = $html + '</td></tr>';
                 $('#messageListing').append($html);
