@@ -90,19 +90,20 @@ function addMessageField($message_path,$message_method)
         $('#specMessenger').append($html);
         $.each($issues, function($issueKey, $issueValue) {
           console.log($message_path + '==' + $title);
-            if($message_path == $title)
-              {
-              $body = $issueValue['body'];
-              $html_url = $issueValue['html_url'];
-              $created_at = $issueValue['created_at'];
-              $title = $issueValue['title'];
 
-              $html = '<tr><td colspan="3" class="messagedetails">';
-              $html = $html + '<strong>' + $title + '(' + $message_method + ')</strong><br />' + $body + '';
-              $html = $html + '</td></tr>';
-              $('#messageListing').append($html);
-              }
-            });
+          $message_body = $issueValue['body'];
+          $message_html_url = $issueValue['html_url'];
+          $message_created_at = $issueValue['created_at'];
+          $message_title = $issueValue['title'];
+
+          if($message_path == $message_title)
+            {
+            $html = '<tr><td colspan="3" class="messagedetails">';
+            $html = $html + '<strong>' + $title + '(' + $message_method + ')</strong><br />' + $body + '';
+            $html = $html + '</td></tr>';
+            $('#messageListing').append($html);
+            }
+          });
         }
       else
         {
