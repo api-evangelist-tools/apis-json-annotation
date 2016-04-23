@@ -73,7 +73,7 @@ function sendIssue()
 
 function addMessageField($message_path,$message_method)
   {
-    var github = new Github({token: $oAuth_Token,auth: "oauth"});
+    var $github = new Github({token: $oAuth_Token,auth: "oauth"});
     var $issues = $github.getIssues(username, reponame);
     var $allIssues = $issues.list(null, function(err, $issues) {
 
