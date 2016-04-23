@@ -73,9 +73,16 @@ function sendIssue()
 
 function addMessageField($message_path,$message_method)
   {
+
+    var options = {
+      title: $message_path,
+      labels: [
+        $message_method
+      ]
+    };
     var $github = new Github({token: $oAuth_Token,auth: "oauth"});
     var $issues = $github.getIssues($org,$repo);
-    var $allIssues = $issues.list(null, function(err, $issues) {
+    var $allIssues = $issues.list(options, function(err, $issues) {
       var_dump($issues);
       });
 
