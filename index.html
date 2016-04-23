@@ -342,13 +342,30 @@ function processAPIsJSON($apisjsonURL)
 
                 $('#specListing').append($html);
 
-                $methodexist = 0;
-                $.each($verbArray, function(key, value) { if(value == $method){ $methodexist = 1; }});
-                if($methodexist==0) { $verbArray.push($method); }
-
                 $method_summary = methodValue['summary'];
-                $tags = methodValue['tags'];
+                $apislug = $method_summary.replace(/ /g,"-");
+                $apislug = $apislug.toLowerCase();
 
+                $parameters = methodValue['parameters'];
+
+                if($parameters > 0)
+                  {
+                  $hmtl = '<ul id="' + $apislug + '"></ul>';
+                  $('#specListing').append($html);
+                  }
+
+                $.each($parameters, function($parameterKey, $parameterValue)
+                  $parameter_in = $parameterValue['in'];
+                  $parameter_iname = $parameterValue['name'];
+                  $parameter_description = $parameterValue['description'];
+                  $parameter_type = $parameterValue['type'];
+
+                  $hmtl = '<li>(<i>' + $parameter_in + '</i>) <strong>' + $parameter_iname + '</strong> - ' + $parameter_type + ' - ' + $parameter_description + '></l>';
+                  $('#specListing').append($html);
+
+                  });
+
+                $tags = methodValue['tags'];
                 $.each($tags, function($tagKey, $tagValue) {
 
                   $tag = $tagValue;
@@ -362,6 +379,7 @@ function processAPIsJSON($apisjsonURL)
                   if($tagexists==0) { $tagArray.push($tag);  }
 
                 });
+
               });
             });
 
