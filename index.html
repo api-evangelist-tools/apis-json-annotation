@@ -81,7 +81,7 @@ function addMessageField($message_path,$message_method)
     var $github = new Github({token: $oAuth_Token,auth: "oauth"});
     var $issues = $github.getIssues($org,$repo);
     var $allIssues = $issues.list(options, function(err, $issues) {
-      if($issues.length==0)
+      if($issues.length>0)
         {
         $.each($issues, function($issueKey, $issueValue) {
             console.log($issueValue);
@@ -113,7 +113,7 @@ function addMessageField($message_path,$message_method)
         $html = $html + '</form>';
         $('#specMessenger').append($html);
         }
-     });        
+     });
   }
 
 function processAPIsJSON($apisjsonURL)
