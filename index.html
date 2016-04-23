@@ -180,8 +180,8 @@ function addMessageField($message_path,$message_method)
               });
 
             }
-          console.log($issues.length);
-          if($issue_count==$issues.length)
+
+          if($issue_count==$issues.length && $issues.length > 1)
             {
             $html = '<form name="addContentForm">';
             $html = $html + '<input type="text" name="message_method" id="message_method" value="' + $message_method + '" style="width: 100%;" />';
