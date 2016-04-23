@@ -86,11 +86,13 @@ function addMessageField($message_path,$message_method)
     var $allIssues = $issues.list(options, function(err, $issues) {
       if($issues.length>0)
         {
+        $issue_count = 1;
         $html = '<table width="100%" id="messageListing" border="1" style="width: 100%; border: 1px solid #000;"></table>';
         $('#specMessenger').append($html);
         $.each($issues, function($issueKey, $issueValue) {
           console.log($message_path + '==' + $title);
 
+          $message_id = $issueValue['id'];
           $message_body = $issueValue['body'];
           $message_html_url = $issueValue['html_url'];
           $message_created_at = $issueValue['created_at'];
@@ -103,6 +105,25 @@ function addMessageField($message_path,$message_method)
             $html = $html + '</td></tr>';
             $('#messageListing').append($html);
             }
+
+          if($issue_count==$issues.length>)
+            {
+            $html = '<form name="addContentForm">';
+            $html = $html + '<input type="text" name="message_id" id="message_id" value="' + $message_id + '" style="width: 100%;" />';
+            //$html = $html + '<input type="text" name="message_method" id="message_path" value="' + $message_path + '" style="width: 100%;" />';
+            $html = $html + '<table border="1" width="100%" style="width: 250px;">';
+            $html = $html + '<tr>';
+            $html = $html + '<td colspan="3">';
+            $html = $html + '<input type="text" name="comment_body" id="comment_body" style="width: 100%;" />';
+            $html = $html + '<input type="button" name="addcomment" value="add" onclick="sendComment();" />';
+            $html = $html + '</td>';
+            $html = $html + '</tr>';
+            $html = $html + '</table>';
+            $html = $html + '</form>';
+            $('#specMessenger').append($html);
+            }
+          $issue_count++;
+
           });
         }
       else
