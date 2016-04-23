@@ -25,6 +25,9 @@ title: APIs.json Annotation
     .method{
       font-size: 11px;
     }
+    .messagedetails{
+      font-size: 11px;
+    }
 </style>
 
 <h1>APIs.json Annotation - 5</h1>
@@ -92,7 +95,7 @@ function addMessageField($message_path,$message_method)
             $created_at = $issueValue['created_at'];
             $title = $issueValue['title'];
 
-            $html = '<tr><td colspan="3">';
+            $html = '<tr><td colspan="3" class="messagedetails">';
             $html = $html + '<strong>' + $title + '</strong><br />' + $body + '';
             $html = $html + '</td></tr>';
             $('#messageListing').append($html);
