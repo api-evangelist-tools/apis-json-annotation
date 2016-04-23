@@ -43,7 +43,7 @@ function processAPIsJSON($apisjsonURL)
 
   $apiHumanURL = "";
 
-  $html = '<table width="100%" id="specListing">';
+  $html = '<table width="100%" id="specListing" border="1">';
   $('#specViewer').append($html);
 
   $FullCount = $FullCount + 1;
@@ -62,7 +62,7 @@ function processAPIsJSON($apisjsonURL)
     $.each($apisJSON['apis'], function(apiKey, apiVal) {
 
       $apiLogo = apiVal['image'];
-      $html = '<tr><td colspan="2"><img src="' + $apiLogo + '" align="right" width="150" /></p>';
+      $html = '<tr><td colspan="2"><img src="' + $apiLogo + '" align="right" width="50" />';
       $('#specViewer').append($html);
       $apiName = apiVal['name'];
       $html = '<p><strong>' + $apiName + '</strong></p>';
