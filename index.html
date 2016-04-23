@@ -60,7 +60,7 @@ function sendIssue()
       var options = {
         title: $message_path,
         body: $message_body,
-        assignee: user,
+        assignee: user['login'],
         labels: [
           $message_method
         ]
