@@ -69,6 +69,7 @@ function sendIssue()
     var github = new Github({token: $oAuth_Token,auth: "oauth"});
     var $authuser = github.getUser();
     var $userdetails = $authuser.show(null, function(err, user) {
+      console.log(user);
       var issues = github.getIssues($org, $repo);
       var options = {
         title: $message_path,
@@ -86,7 +87,7 @@ function sendIssue()
     });
   }
 
-  function sendComment()
+function sendComment()
     {
       $message_path = $("#message_path").val();
       $message_method = $("#message_method").val();
