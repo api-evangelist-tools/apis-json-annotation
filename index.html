@@ -197,7 +197,8 @@ function addMessageField($message_path,$message_method)
               ]
             };
 
-            var $comments = $github.getComments($org,$repo);
+            var $github2 = new Github({token: $oAuth_Token,auth: "oauth"});
+            var $comments = $github2.getComments($org,$repo);
             var $allComments = $comments.list(options, function(err, $comments) {
 
               $.each($comments, function($commentKey, $commentValue) {
