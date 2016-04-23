@@ -44,8 +44,9 @@ title: APIs.json Annotation
 
 <h1>APIs.json Annotation</h1>
 <p>I wanted a way to have a conversation around an API design with a group of folks. Some who are technical, but others who are not. I also wanted to use Github issues to help manage the ongoing conversations around the API and its design. I got to work building one of my micro tools to help me manage the process, in a way that can easily be forked and run for any project.</p>
-<p>This tool runs 100% on Github pages, leverage JavaScript and the Github API to do what it does. Users who have been added to the repo, can pass in a personal token using the "token" query string variable, and will then be able to annotate and comment.</p>
-<p>All annotations are just added to this Github repos issue management system, using the path as the title, and applying the HTTP verb as a label. You can access everything under issue management, in the Github repository for this project.</p>
+<p>This tool runs 100% on Github pages, leverage JavaScript and the Github API to do what it does. Users who have been added to the repo, can <a href="https://github.com/settings/tokens">pass in a personal token</a> using the "token" query string variable, and then will be able to annotate and comment on each endpoint.</p>
+<p>All annotations to each endpoint are just added to <a href="https://github.com/api-evangelist-tools/apis-json-annotation/issues">this Github repos issue management system</a>, using the path as the title, and applying the HTTP verb as a label. You can access everything under issue management, in the <a href="https://github.com/api-evangelist-tools/apis-json-annotation/">Github repository for this project</a>.</p>
+<center><button onclick="showAPIsjson();" type="submit" class="btn btn-default" name="show-apis-json" value="1">View The APIs.json Being Annotated</button></center>
 <script type="text/jscript">
 
 if(getUrlVar('token'))
@@ -62,6 +63,13 @@ var $pathArray = [];
 var $verbArray = [];
 var $tagArray = [];
 
+function showAPIsjson();
+  {
+  // Bring into focus
+  document.getElementById("jsonViewerDetails").style.display = '';
+  // Show the Modal
+  $('#apisJSONModal').modal('show');
+  }
 
 function addMessageForm($message_path,$message_method)
   {
@@ -250,10 +258,11 @@ function processAPIsJSON($apisjsonURL)
 
   var loadIt = $.getJSON($apisjsonURL, function($apisJSON) {
 
-    $masterName = $apisJSON['name'];
-    //$html = '<p><strong>' + $masterName + '</strong></p>';
-    //$('#specViewer').append($html);
+    // Publish to Viewer
+    $viewer = JSON.stringify($MasterAPISJSON, null, 4);
+    document.getElementById("jsonViewerDetails").value = $viewer;
 
+    $masterName = $apisJSON['name'];
     $masterDesc = $apisJSON['description'];
     $masterLogo = $apisJSON['image'];
     $masterURL = $apisJSON['url'];
@@ -399,3 +408,19 @@ processAPIsJSON($apisjsonURL);
   </tr>
 </table>
 <p>You can fork this project, and run under your own account, on your own APIs.json index. I am just exploring different ways of working with the surface area of an API, using machine readable API definitions like APIs.json and OpenAPI Spec.</p>
+<div class="modal fade" id="apisJSONModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Here Is The APIs.json File Being Annotated</h4>
+      </div>
+      <div class="modal-body">
+        <textarea id="jsonViewerDetails" rows="10" style="border: 0px solid #FFF; width: 500px; height: 100%; display: none;"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default center-block" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
