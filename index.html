@@ -81,7 +81,7 @@ function addMessageField($message_path,$message_method)
     var $github = new Github({token: $oAuth_Token,auth: "oauth"});
     var $issues = $github.getIssues($org,$repo);
     var $allIssues = $issues.list(options, function(err, $issues) {
-      var_dump($issues);
+      console.log($issues);
       });
 
   $html = '<form name="addMessageForm">';
