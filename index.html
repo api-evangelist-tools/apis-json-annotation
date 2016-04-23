@@ -48,7 +48,7 @@ if(getUrlVar('token'))
 var $org = 'api-evangelist-tools';
 var $repo = 'apis-json-annotation';
 var $user = 'kinlane';
-
+var $fullcount = 0;
 function sendIssue()
   {
     $message_path = $("#message_path").val();
@@ -214,7 +214,7 @@ function processAPIsJSON($apisjsonURL)
 
   $apiHumanURL = "";
 
-  $FullCount = $FullCount + 1;
+  $fullcount = $fullcount + 1;
 
   var loadIt = $.getJSON($apisjsonURL, function($apisJSON) {
 
@@ -248,7 +248,7 @@ function processAPIsJSON($apisjsonURL)
         if($type=='x-openapi-spec')
           {
 
-          $FullCount = $FullCount + 1;
+          $fullcount = $fullcount + 1;
 
           if(!$url.indexOf('http') > -1)
             {
@@ -329,8 +329,8 @@ function processAPIsJSON($apisjsonURL)
 
           loadIt3.complete(function() {
 
-            $FullCount = $FullCount - 1;
-            if($FullCount==0){
+            $fullcount = $fullcount - 1;
+            if($fullcount==0){
 
               // Load What We Want
               $(function() {
