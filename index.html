@@ -353,14 +353,14 @@ function processAPIsJSON($apisjsonURL)
                 $apislug = $apislug.toLowerCase();
                 $parameters = methodValue['parameters'];
 
-                if(methodValue['paramters'] > 0)
+                if(methodValue['parameters'] > 0)
                   {
                   $html = '<tr><td colspan="3"><ul id="' + $apislug + '" class="paramlist"></ul></td></tr>';
                   $('#specListing').append($html);
                   console.log($apislug);
                   }
 
-                $.each($methodValue['paramters'], function($parameterKey, $parameterValue){
+                $.each($methodValue['parameters'], function($parameterKey, $parameterValue){
                   $html = '<li class="paramitem">(<i>' + $parameterValue['in'] + '</i>) <strong>' + $parameterValue['name'] + '</strong> - ' + $parameterValue['type'] + ' - ' + $parameterValue['description'] + '></l>';
                   $('#' + $apislug).append($html);
                   });
