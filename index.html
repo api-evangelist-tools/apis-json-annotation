@@ -87,7 +87,6 @@ function sendIssue()
     var github = new Github({token: $oAuth_Token,auth: "oauth"});
     var $authuser = github.getUser();
     var $userdetails = $authuser.show(null, function(err, user) {
-      console.log(user);
       var issues = github.getIssues($org, $repo);
       var options = {
         title: $message_path,
@@ -325,7 +324,7 @@ function processAPIsJSON($apisjsonURL)
                 $html = $html + '<td class="method" width="35">(' + $method + ')</td>';
                 $html = $html + '<td width="50" onclick="addMessageField(' + $sQuote + $path_name + $sQuote + ',' + $sQuote + $method + $sQuote + '); return false;"><img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-messaging-system.png" width="25" /></td>';
                 $html = $html + '</tr>';
-                //console.log($html);
+
                 $('#specListing').append($html);
 
                 $methodexist = 0;
