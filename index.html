@@ -354,7 +354,7 @@ function processAPIsJSON($apisjsonURL)
 
                 if(methodValue['parameters'].length > 0)
                   {
-                  $html = '<tr><td colspan="3"><ul id="' + $apislug + '" class="paramlist"></ul></td></tr>';
+                  $html = '<tr><td colspan="3">' + methodValue['parameters'].length + '<ul id="' + $apislug + '" class="paramlist"></ul></td></tr>';
                   console.log($html);
                   $('#specListing').append($html);
 
