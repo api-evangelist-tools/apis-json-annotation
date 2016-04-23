@@ -85,7 +85,8 @@ function sendIssue()
     {
       $message_path = $("#message_path").val();
       $message_method = $("#message_method").val();
-
+      console.log($message_path);
+      console.log($message_method);
       $message_number = $("#message_number").val();
       $comment_body = $("#comment_body").val();
       $comments_url = '/repos/' + $org + '/' + $repo + '/issues/' + $message_number + '/comments';
