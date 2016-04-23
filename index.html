@@ -38,16 +38,21 @@ var $pathArray = [];
 var $verbArray = [];
 var $tagArray = [];
 
-function addMessageField()
+function addMessageField($message_path,$message_method)
   {
-  $html = '<table border="1">';
+
+  $html = '<form name="addMessageForm">';
+  $html = $html + '<input type="text" name="message_path" id="message_method" value="' + $message_path + '" style="width: 100%;" />';
+  $html = $html + '<input type="text" name="message_method" id="message_path" value="' + $message_method + '" style="width: 100%;" />';
+  $html = $html + '<table border="1">';
   $html = $html + '<tr>';
   $html = $html + '<td colspan="3">';
-  $html = $html + '<input type="text" name="message" id="message" style="width: 100%;" />';
+  $html = $html + '<input type="text" name="message_body" id="message_body" style="width: 100%;" />';
   $html = $html + '<input type="button" name="addmessage" value="add" />';
   $html = $html + '</td>';
   $html = $html + '</tr>';
   $html = $html + '</table>';
+  $html = $html + '</form>';
   $('#specMessenger').append($html);
   }
 
@@ -136,10 +141,12 @@ function processAPIsJSON($apisjsonURL)
                 $method = methodKey;
                 $method = $method.toUpperCase();
 
+                $sQuote = String.fromCharCode(64);
+
                 $html = '<tr>';
                 $html = $html + '<td class="pathname">' + $path_name + '</td>';
                 $html = $html + '<td class="method" width="35">(' + $method + ')</td>';
-                $html = $html + '<td width="50" onclick="addMessageField(); return false;"><img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-messaging-system.png" width="25" /></td>';
+                $html = $html + '<td width="50" onclick="addMessageField(' + $sQuote + $path_name + $sQuote + ',' + $sQuote + $method + $sQuote + '); return false;"><img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-messaging-system.png" width="25" /></td>';
                 $html = $html + '</tr>';
                 //console.log($html);
                 $('#specViewer').append($html);
