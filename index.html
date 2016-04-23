@@ -40,7 +40,20 @@ var $tagArray = [];
 
 function addMessageField()
   {
-console.log("hello");
+
+  $html = '<form name="addMessageForm">';
+  $html = $html + '<input type="text" name="message_path" id="message_method" value="" style="width: 100%;" />';
+  $html = $html + '<input type="text" name="message_method" id="message_path" value="" style="width: 100%;" />';
+  $html = $html + '<table border="1">';
+  $html = $html + '<tr>';
+  $html = $html + '<td colspan="3">';
+  $html = $html + '<input type="text" name="message_body" id="message_body" style="width: 100%;" />';
+  $html = $html + '<input type="button" name="addmessage" value="add" />';
+  $html = $html + '</td>';
+  $html = $html + '</tr>';
+  $html = $html + '</table>';
+  $html = $html + '</form>';
+  $('#specMessenger').append($html);
   }
 
 function processAPIsJSON($apisjsonURL)
