@@ -123,9 +123,6 @@ function processAPIsJSON($apisjsonURL)
 
   $apiHumanURL = "";
 
-  $html = '<table width="100%" id="specListing" border="1" style="width: 100%; border: 1px solid #000;"></table>';
-  $('#specViewer').append($html);
-
   $FullCount = $FullCount + 1;
 
   var loadIt = $.getJSON($apisjsonURL, function($apisJSON) {
@@ -266,7 +263,9 @@ processAPIsJSON($apisjsonURL);
 
 <table width="100%" cellpadding="2" cellspacing="2" border"1">
   <tr>
-    <td width="65%" valign="top" id="specViewer"></td>
+    <td width="65%" valign="top" id="specViewer">
+      <table width="100%" id="specListing" border="1" style="width: 100%; border: 1px solid #000;"></table>'
+    </td>
     <td width="35%" valign="top" id="specMessenger"></td>
   </tr>
 </table>
