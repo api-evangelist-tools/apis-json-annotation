@@ -61,15 +61,11 @@ function processAPIsJSON($apisjsonURL)
 
     $.each($apisJSON['apis'], function(apiKey, apiVal) {
 
-      //$apiLogo = apiVal['image'];
-      //$html = '<tr><td colspan="2"><img src="' + $apiLogo + '" align="left" width="50" />';
-      //$('#specViewer').append($html);
       $apiName = apiVal['name'];
-      $html = '<strong>' + $apiName + '</strong><br />';
+      $html = '<tr><td colspan="2">';
+      $html = $html + '<strong>' + $apiName + '</strong><br />';
+      $html = $html + '</td></tr>';
       $('#specViewer').append($html);
-      $apiDesc = apiVal['description'];
-      //$html = '' + $apiDesc + '</td></tr>';
-      //$('#specViewer').append($html);
 
       $apiHumanURL = apiVal['humanURL'];
       $apiBaseURL = apiVal['baseURL'];
@@ -130,6 +126,8 @@ function processAPIsJSON($apisjsonURL)
                 $html = '<tr>';
                 $html = $html + '<td class="pathname">' + $path_name + '</td>';
                 $html = $html + '<td class="method" width="35">(' + $method + ')</td>';
+                $html = $html + '<td class="method" width="30"><a href=#"><img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-messaging-system.png" width="25" /></a></td>';
+
                 $html = $html + '</tr>';
                 $('#specViewer').append($html);
 
