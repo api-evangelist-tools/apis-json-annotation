@@ -79,12 +79,18 @@ function sendIssue()
       $issue_id = $("#issue_id").val();
       $comment_body = $("#comment_body").val();
 
+      var $issue = {
+        comments_url: [
+          $issue_id
+        ]
+      };
+
       var github = new Github({token: $oAuth_Token,auth: "oauth"});
       var $authuser = github.getUser();
       var $userdetails = $authuser.show(null, function(err, user) {
 
         var $issues = github.getIssues($org, $repo);
-        $issues.comment($issue_id, $comment_body, function(err, comment) {
+        $issues.comment($issue, $comment_body, function(err, comment) {
 
         console.log(err);
         console.log(comment);
