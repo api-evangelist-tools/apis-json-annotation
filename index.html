@@ -106,7 +106,7 @@ function addMessageField($message_path,$message_method)
         $message_method
       ]
     };
-    
+
     var $github = new Github({token: $oAuth_Token,auth: "oauth"});
     var $issues = $github.getIssues($org,$repo);
     var $allIssues = $issues.list(options, function(err, $issues) {
@@ -148,11 +148,12 @@ function addMessageField($message_path,$message_method)
 
                 $comment_body = $commentValue['body'];
                 $comment_created_at = $commentValue['created_at'];
+                $comment_user = $commentValue['user']['login'];
 
                 var date = new Date($comment_created_at);
                 $comment_created_at = (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
                 $html = '<tr><td colspan="3" class="messagedetails">';
-                $html = $html + '<i>(' + $comment_created_at + ')</i>' + $comment_body + '';
+                $html = $html + '<strong>(' + $comment_user + ')</strong><i>(' + $comment_created_at + ')</i>' + $comment_body + '';
                 $html = $html + '</td></tr>';
                 $('#messageListing').append($html);
 
