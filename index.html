@@ -15,6 +15,16 @@ title: APIs.json Annotation
         width: 100%;
         height: 150px;
     }
+
+    .specListing{
+
+    }
+    .specListing tr{
+
+    }
+    .specListing td{
+      font-size: 11px;
+    }
 </style>
 
 <h1>APIs.json Annotation</h1>
@@ -33,7 +43,7 @@ function processAPIsJSON($apisjsonURL)
 
   $apiHumanURL = "";
 
-  $html = '<table width="100%">';
+  $html = '<table width="100%" id="specListing">';
   $('#specViewer').append($html);
 
   $FullCount = $FullCount + 1;
@@ -63,9 +73,6 @@ function processAPIsJSON($apisjsonURL)
 
       $apiHumanURL = apiVal['humanURL'];
       $apiBaseURL = apiVal['baseURL'];
-
-      $html = '<tr><td colspan="2"><strong>Base URL:</strong> ' + $apiBaseURL + '</td></tr>';
-      $('#specViewer').append($html);
 
       $apiProperties = apiVal['properties'];
 
@@ -99,6 +106,13 @@ function processAPIsJSON($apisjsonURL)
 
             // show the unique host
             $host = $openapispec['host'];
+            $basepath = $openapispec['basePath'];
+
+            $html = '<tr><td colspan="2"><strong>Host:</strong> ' + $host + '</td></tr>';
+            $('#specViewer').append($html);
+
+            $html = '<tr><td colspan="2"><strong>Base Path:</strong> ' + $basepath + '</td></tr>';
+            $('#specViewer').append($html);
 
             $.each($paths, function(pathKey, pathValue) {
 
