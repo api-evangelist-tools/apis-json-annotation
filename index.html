@@ -81,24 +81,39 @@ function addMessageField($message_path,$message_method)
     var $github = new Github({token: $oAuth_Token,auth: "oauth"});
     var $issues = $github.getIssues($org,$repo);
     var $allIssues = $issues.list(options, function(err, $issues) {
-    $.each($issues, function($issueKey, $issueValue) {
-        console.log($issueValue);
-        });
-      });
+      if($issues.length==0)
+        {
+        $.each($issues, function($issueKey, $issueValue) {
+            console.log($issueValue);
+            $body = $issueValue['body'];
+            $html_url = $issueValue['html_url'];
+            $created_at = $issueValue['created_at'];
+            $title = $issueValue['title'];
 
-  $html = '<form name="addMessageForm">';
-  $html = $html + '<input type="text" name="message_path" id="message_method" value="' + $message_method + '" style="width: 100%;" />';
-  $html = $html + '<input type="text" name="message_method" id="message_path" value="' + $message_path + '" style="width: 100%;" />';
-  $html = $html + '<table border="1" width="100%" style="width: 250px;">';
-  $html = $html + '<tr>';
-  $html = $html + '<td colspan="3">';
-  $html = $html + '<input type="text" name="message_body" id="message_body" style="width: 100%;" />';
-  $html = $html + '<input type="button" name="addmessage" value="add" onclick="sendIssue();" />';
-  $html = $html + '</td>';
-  $html = $html + '</tr>';
-  $html = $html + '</table>';
-  $html = $html + '</form>';
-  $('#specMessenger').append($html);
+            $html = '<tr><td colspan="3">';
+            $html = $html + '<strong>' + $title + '</strong><br />' + $body + '';
+            $html = $html + '</td></tr>';
+            $('#specMessenger').append($html);
+
+            });
+          });
+        }
+      else
+        {
+        $html = '<form name="addMessageForm">';
+        $html = $html + '<input type="text" name="message_path" id="message_method" value="' + $message_method + '" style="width: 100%;" />';
+        $html = $html + '<input type="text" name="message_method" id="message_path" value="' + $message_path + '" style="width: 100%;" />';
+        $html = $html + '<table border="1" width="100%" style="width: 250px;">';
+        $html = $html + '<tr>';
+        $html = $html + '<td colspan="3">';
+        $html = $html + '<input type="text" name="message_body" id="message_body" style="width: 100%;" />';
+        $html = $html + '<input type="button" name="addmessage" value="add" onclick="sendIssue();" />';
+        $html = $html + '</td>';
+        $html = $html + '</tr>';
+        $html = $html + '</table>';
+        $html = $html + '</form>';
+        $('#specMessenger').append($html);
+        }
   }
 
 function processAPIsJSON($apisjsonURL)
