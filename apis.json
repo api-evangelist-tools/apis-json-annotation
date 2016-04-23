@@ -12,7 +12,7 @@
   "specificationVersion": "0.14",
   "apis": [
     {
-      "name": "Kin Lane API",
+      "name": "Kin Lane API API",
       "description": "<p><span>This is my API for working with the APIs I track on. I use this API to add, update, and delete the APIs, their details, an I am working to create as many API focused endpoints, which let me manage even more APIs, whether they are mine or other publicly available APis I am interested in.</span></p>",
       "image": "http://kinlane-productions.s3.amazonaws.com/api-evangelist-site/company/logos/kin.png",
       "humanURL": "http://kin-lane.github.io/api/",

@@ -38,8 +38,8 @@ function processAPIsJSON($apisjsonURL)
   var loadIt = $.getJSON($apisjsonURL, function($apisJSON) {
 
     $masterName = $apisJSON['name'];
-    $html = '<p><strong>' + $masterName + '</strong></p>';
-    $('#specViewer').append($html);
+    //$html = '<p><strong>' + $masterName + '</strong></p>';
+    //$('#specViewer').append($html);
 
     $masterDesc = $apisJSON['description'];
     $masterLogo = $apisJSON['image'];
@@ -48,13 +48,21 @@ function processAPIsJSON($apisjsonURL)
 
     $.each($apisJSON['apis'], function(apiKey, apiVal) {
 
+      $apiLogo = apiVal['image'];
+      $html = '<p><img src="' + $apiLogo + '" align="right" width="150" /></p>';
+      $('#specViewer').append($html);
       $apiName = apiVal['name'];
       $html = '<p><strong>' + $apiName + '</strong></p>';
       $('#specViewer').append($html);
       $apiDesc = apiVal['description'];
-      $apiLogo = apiVal['image'];
+      $html = '<p><strong>' + $apiDesc + '</strong></p>';
+      $('#specViewer').append($html);
+
       $apiHumanURL = apiVal['humanURL'];
       $apiBaseURL = apiVal['baseURL'];
+
+      $html = '<br /><p><strong>Base URL:</strong> ' + $apiBaseURL + '</p><br />';
+      $('#specViewer').append($html);
 
       $apiProperties = apiVal['properties'];
 
