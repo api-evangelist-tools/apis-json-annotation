@@ -352,7 +352,7 @@ function processAPIsJSON($apisjsonURL)
                 $apislug = $method_summary.replace(/ /g,"-") + '-' + $method.replace(/ /g,"-");
                 $apislug = $apislug.toLowerCase();
 
-                if(methodValue['parameters'] > 0)
+                if(methodValue['parameters'].length > 0)
                   {
                   $html = '<tr><td colspan="3"><ul id="' + $apislug + '" class="paramlist"></ul></td></tr>';
                   console.log($html);
