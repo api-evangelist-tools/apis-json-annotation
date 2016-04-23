@@ -89,6 +89,7 @@ function addMessageField($message_path,$message_method)
         $html = '<table width="100%" id="messageListing" border="1" style="width: 100%; border: 1px solid #000;"></table>';
         $('#specMessenger').append($html);
         $.each($issues, function($issueKey, $issueValue) {
+          console.log($message_path + '==' + $title);
             if($message_path == $title)
               {
               $body = $issueValue['body'];
