@@ -40,6 +40,12 @@ title: APIs.json Annotation
       padding: 0px 0px 10px 0px;
       margin: 0px 0px 0px 0px;
     }
+    .paramlist{
+    margin-left: 20px;
+    }
+    .paramitem{
+    font-size: 10px;
+    }
 </style>
 
 <h1>APIs.json Annotation</h1>
@@ -350,7 +356,7 @@ function processAPIsJSON($apisjsonURL)
 
                 if($parameters > 0)
                   {
-                  $html = '<tr><td colspan="3"><ul id="' + $apislug + '"></ul></td></tr>';
+                  $html = '<tr><td colspan="3"><ul id="' + $apislug + '" class="paramlist"></ul></td></tr>';
                   $('#specListing').append($html);
                   }
 
@@ -360,7 +366,7 @@ function processAPIsJSON($apisjsonURL)
                   $parameter_description = $parameterValue['description'];
                   $parameter_type = $parameterValue['type'];
 
-                  $html = '<li>(<i>' + $parameter_in + '</i>) <strong>' + $parameter_iname + '</strong> - ' + $parameter_type + ' - ' + $parameter_description + '></l>';
+                  $html = '<li class="paramitem">(<i>' + $parameter_in + '</i>) <strong>' + $parameter_iname + '</strong> - ' + $parameter_type + ' - ' + $parameter_description + '></l>';
                   $('#specListing').append($html);
 
                   });
