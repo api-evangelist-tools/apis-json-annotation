@@ -141,13 +141,12 @@ function processAPIsJSON($apisjsonURL)
                 $method = methodKey;
                 $method = $method.toUpperCase();
 
-                $sQuote = String.fromCharCode(64);
-                console.log("quote: "+$sQuote);
+                $sQuote = String.fromCharCode(39);
 
                 $html = '<tr>';
                 $html = $html + '<td class="pathname">' + $path_name + '</td>';
                 $html = $html + '<td class="method" width="35">(' + $method + ')</td>';
-                $html = $html + '<td width="50" onclick="addMessageField(); return false;"><img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-messaging-system.png" width="25" /></td>';
+                $html = $html + '<td width="50" onclick="addMessageField(' + $sQuote + $path_name + $sQuote + ',' + $sQuote + $method + $sQuote + '); return false;"><img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-messaging-system.png" width="25" /></td>';
                 $html = $html + '</tr>';
                 //console.log($html);
                 $('#specViewer').append($html);
