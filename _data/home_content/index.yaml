@@ -1,0 +1,16 @@
+- content_id: home-primary
+  title: 'API Evangelist - Design'
+  image: 'https://s3.amazonaws.com/kinlane-productions/api-evangelist-logos/api-evangelist-red-seal.png'
+  content: >-
+    <p>API Evangelist is a blog dedicated to the technology, business, and politics of APIs. It was started in 2010 by Kin Lane to better understand what was happening after the mobile phone and the cloud was unleashed on the world. Over the last nine years it has worked to define as many stops along the API lifecycle as we could, for consideration across different API implementations.</p>
+    <p>The home page has links to research covering 100 stops along the lifecycle, and the blog has almost a decades worth of content that is still very applicable to most API operations, as not a whole lot has changed in a decade. Everyone is still working to make sense of their resources, and understand the best way to make them available across multiple clouds, devices, and integrated directly into other systems around the globe.</p>
+    <p>This site is currently sponsored by Postman and Tyk, who both help curate the research, and publish content alongside the work by Kin Lane. The entire network of sites operate 100% on Github underneath the API Evangelist Github orgnizations. If you see anything that needs updating or fixing, feel free to submit a merge request--thanks for your help!</p>
+  tags: Design
+- content_id: home-about
+  title: About This API Research
+  image: 'https://s3.amazonaws.com/kinlane-productions/api-evangelist-logos/api-evangelist-butterfly-vertical.png'
+  content: >-
+    <p>This is a research site dedicated to API design. Where we actively publish anything from the blog on API design, as well as curated links, companies, organiations, tools, and a handful of th ecommon building blocks we've identified across the space.</p>
+    <p>If you know of something that should exist here, feel free to <a href="https://github.com/api-evangelist/design/issues/new">submit a GitHub issue to the repository behind this website</a>, or feel free to submit a merge request, adding the detail to either the list or <a href="https://github.com/api-evangelist/design/blob/gh-pages/_data/organizations/index.yaml">organizations</a>, <a href="https://github.com/api-evangelist/design/blob/gh-pages/_data/tools/index.yaml">tools</a>, or <a href="https://github.com/api-evangelist/design/blob/gh-pages/_data/building_blocks/index.yaml">building blocks</a>--they are just YAML, and anyone can edit.</p>
+    <p>If you have any questions, feel free to submit a GitHub Issue, Tweet at us, or email at info@apievangelist.com</p>
+  tags: Design

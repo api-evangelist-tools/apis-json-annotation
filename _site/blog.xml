@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+	<channel>
+		<title>APIs.json Annotation</title>
+		<description>This is my micro tool to help you achieve what I'd consider to be a minimum viable presence for your API operations. Answer any question that you can, and generate a report that you can consider as you are crafting your API management road map.</description>
+		<link>http://localhost:4000</link>
+		<language>en-us</language>
+		<atom:link href="http://localhost:4000/blog.xml" rel="self" type="application/rss+xml" />
+		<item>
+				<title>NextGen Storage for Next Gen Apps</title>
+				<description></description>
+				<pubDate>Wed, 30 Mar 2016 00:00:00 -0700</pubDate>
+				<link>http://boundary.com/blog/2013/04/29/nextgen-storage-for-next-gen-apps/</link>
+				<guid isPermaLink="true">http://boundary.com/blog/2013/04/29/nextgen-storage-for-next-gen-apps/</guid>
+			</item>
+	</channel>
+</rss>
